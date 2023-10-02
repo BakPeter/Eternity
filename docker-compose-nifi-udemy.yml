@@ -1,0 +1,57 @@
+version: "3.4"
+
+services:
+  nifi-udemy-2:
+    container_name: nifi-eternity
+    image: 'apache/nifi:latest'
+    restart: on-failure
+    environment:
+      - SINGLE_USER_CREDENTIALS_USERNAME=admin
+      - SINGLE_USER_CREDENTIALS_PASSWORD=ctsBtRBKHRAx69EqUghvvgEvjnaLjFEB
+      - NIFI_WEB_HTTPS_PORT=8443
+      # - NIFI_WEB_HTTP_PORT=8080
+    ports:
+      - 8443:8443
+    volumes:
+      - C:\Docker\Data\nifi\nifi-eternity\database_repository:/opt/nifi/nifi-current/database_repository
+      - C:\Docker\Data\nifi\nifi-eternity\flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
+      - C:\Docker\Data\nifi\nifi-eternity\content_repository:/opt/nifi/nifi-current/content_repository
+      - C:\Docker\Data\nifi\nifi-eternity\provenance_repository:/opt/nifi/nifi-current/provenance_repository
+      - C:\Docker\Data\nifi\nifi-eternity\state:/opt/nifi/nifi-current/state
+      - C:\Docker\Data\nifi\nifi-eternity\logs:/opt/nifi/nifi-current/logs
+      # uncomment the next line after copying the /conf directory from the container to your local directory to persist NiFi flows
+      - C:\Docker\Data\nifi\nifi-eternity\conf:/opt/nifi/nifi-current/conf
+      # folder for user source
+      # - C:\Docker\Data\nifi\nifi-eternity\_source:/opt/nifi/nifi-current/source
+      # folder for user target 
+      - C:\Docker\Data\nifi\nifi-eternity\_target:/opt/nifi/nifi-current/target
+    networks:
+      - main
+
+networks:
+  main:
+    # nifi-udemy-2:
+    #   container_name: nifi-udemy-2
+    #   image: 'apache/nifi:latest'
+    #   restart: on-failure
+    #   environment:
+    #     - SINGLE_USER_CREDENTIALS_USERNAME=admin
+    #     - SINGLE_USER_CREDENTIALS_PASSWORD=ctsBtRBKHRAx69EqUghvvgEvjnaLjFEB
+    #     - NIFI_WEB_HTTPS_PORT=8443
+    #   ports:
+    #     - 8443:8443
+    #   volumes:
+    #     - C:\Docker\Data\nifi\nifi-udemy-2\database_repository:/opt/nifi/nifi-current/database_repository
+    #     - C:\Docker\Data\nifi\nifi-udemy-2\flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
+    #     - C:\Docker\Data\nifi\nifi-udemy-2\content_repository:/opt/nifi/nifi-current/content_repository
+    #     - C:\Docker\Data\nifi\nifi-udemy-2\provenance_repository:/opt/nifi/nifi-current/provenance_repository
+    #     - C:\Docker\Data\nifi\nifi-udemy-2\state:/opt/nifi/nifi-current/state
+    #     - C:\Docker\Data\nifi\nifi-udemy-2\logs:/opt/nifi/nifi-current/logs
+    #     # uncomment the next line after copying the /conf directory from the container to your local directory to persist NiFi flows
+    #     - C:\Docker\Data\nifi\nifi-udemy-2\conf:/opt/nifi/nifi-current/conf
+    #     # folder for user source
+    #     - C:\Docker\Data\nifi\nifi-udemy-2\_source:/opt/nifi/nifi-current/source
+    #     # folder for user target 
+    #     - C:\Docker\Data\nifi\nifi-udemy-2\_target:/opt/nifi/nifi-current/target
+    #   networks:
+    #     - main

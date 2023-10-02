@@ -1,0 +1,4 @@
+docker cp <container-name>:/opt/nifi/nifi-current/conf C:\Docker\Data\nifi\<mount-folder-name(PROJECT_NAME)>\conf
+
+
+docker cp nifi-eternit-1:/opt/nifi/nifi-current/conf C:\Docker\Data\nifi\nifi-review\conf

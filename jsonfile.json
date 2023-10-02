@@ -1,0 +1,334 @@
+{
+    "type": "record",
+    "name": "UserRecord",
+    "fields": [
+        {
+            "name": "gender",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "name",
+            "type": {
+                "type": "record",
+                "name": "NameRecord",
+                "fields": [
+                    {
+                        "name": "title",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "first",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "last",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "name": "location",
+            "type": {
+                "type": "record",
+                "name": "LocationRecord",
+                "fields": [
+                    {
+                        "name": "street",
+                        "type": {
+                            "type": "record",
+                            "name": "StreetRecord",
+                            "fields": [
+                                {
+                                    "name": "name",
+                                    "type": [
+                                        "null",
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "name": "number",
+                                    "type": [
+                                        "null",
+                                        "string"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "city",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "state",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "country",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "postcode",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "coordinates",
+                        "type": {
+                            "type": "record",
+                            "name": "CoordinatesRecord",
+                            "fields": [
+                                {
+                                    "name": "latitude",
+                                    "type": [
+                                        "null",
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "name": "longitude",
+                                    "type": [
+                                        "null",
+                                        "string"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "timezone",
+                        "type": {
+                            "type": "record",
+                            "name": "TimezoneRecord",
+                            "fields": [
+                                {
+                                    "name": "offset",
+                                    "type": [
+                                        "null",
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "name": "description",
+                                    "type": [
+                                        "null",
+                                        "string"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "email",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "login",
+            "type": {
+                "name": "LoginRecord",
+                "type": "record",
+                "fields": [
+                    {
+                        "name": "uuid",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "username",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "password",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "salt",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "md5",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "sha1",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "sha256",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "name": "dob",
+            "type": {
+                "type": "record",
+                "name": "DobRecord",
+                "fields": [
+                    {
+                        "name": "date",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "age",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "name": "registered",
+            "type": {
+                "type": "record",
+                "name": "RegisteredRecord",
+                "fields": [
+                    {
+                        "name": "date",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "age",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "name": "phone",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "cell",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "id",
+            "type": {
+                "type": "record",
+                "name": "IdRecord",
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "value",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "name": "picture",
+            "type": {
+                "type": "record",
+                "name": "PictureRecord",
+                "fields": [
+                    {
+                        "name": "large",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "medium",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    {
+                        "name": "thumbnail",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "name": "nat",
+            "type": [
+                "null",
+                "string"
+            ]
+        }
+    ]
+}

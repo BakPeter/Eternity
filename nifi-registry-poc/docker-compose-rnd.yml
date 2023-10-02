@@ -1,0 +1,52 @@
+version: '3.4'
+
+services:
+  nifi-rnd:
+    image: 'apache/nifi:latest'
+    restart: on-failure
+    environment:
+      - SINGLE_USER_CREDENTIALS_USERNAME=admin
+      - SINGLE_USER_CREDENTIALS_PASSWORD=Aa123456!Aa123456!
+      - NIFI_VARIABLE_REGISTRY_PROPERTIES=./custom-properties/props2.properties
+      # - NIFI_WEB_HTTPS_PORT=8443
+      - NIFI_WEB_HTTP_PORT=8080
+    ports:
+      # - 8443:8443
+      - 8080:8080
+      # - 8090:8090
+    volumes:
+      - C:\Docker\Data\nifi\${PROJECT_RND}\database_repository:/opt/nifi/nifi-current/database_repository
+      - C:\Docker\Data\nifi\${PROJECT_RND}\flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
+      - C:\Docker\Data\nifi\${PROJECT_RND}\content_repository:/opt/nifi/nifi-current/content_repository
+      - C:\Docker\Data\nifi\${PROJECT_RND}\provenance_repository:/opt/nifi/nifi-current/provenance_repository
+      - C:\Docker\Data\nifi\${PROJECT_RND}\state:/opt/nifi/nifi-current/state
+      - C:\Docker\Data\nifi\${PROJECT_RND}\logs:/opt/nifi/nifi-current/logs
+      # uncomment the next line after copying the /conf directory from the container to your local directory to persist NiFi flows
+      # run command in bind mount folder: docker cp <container-name>:/opt/nifi/nifi-current/conf C:\Docker\Data\nifi\${PROJECT_RND}\conf
+      - C:\Docker\Data\nifi\${PROJECT_RND}\conf:/opt/nifi/nifi-current/conf
+      # folder for user source
+      - C:\Docker\Data\nifi\${PROJECT_RND}\_source:/opt/nifi/nifi-current/source
+      # folder for user target
+      - C:\Docker\Data\nifi\${PROJECT_RND}\_target:/opt/nifi/nifi-current/target
+      # folder for temp data
+      - C:\Docker\Data\nifi\${PROJECT_RND}\_temp-data:/opt/nifi/nifi-current/temp-data
+    networks:
+      - main-rnd
+
+  nifi-registry-rnd:
+    image: 'apache/nifi-registry:latest'
+    restart: on-failure
+    ports:
+      - 18080:18080
+    volumes:
+      # uncomment the next line after copying the /conf directory from the container to your local directory to persist Nifi-Regsitry data
+      # run command in bind mount folder: docker cp <container-name>:opt/nifi-registry/nifi-registry-current/conf C:\Docker\Data\nifi-registry\${PROJECT_RND}\conf
+      - C:\Docker\Data\nifi-registry\${PROJECT_RND}\conf:/opt/nifi-registry/nifi-registry-current/conf
+      - C:\Docker\Data\nifi-registry\${PROJECT_RND}\flow-storage:/opt/nifi-registry/nifi-registry-current/flow_storage
+      - C:\Docker\Data\nifi-registry\${PROJECT_RND}\database:/opt/nifi-registry/nifi-registry-current/database
+      - C:\Workspaces\flow_storage\${PROJECT_RND}:/opt/nifi-registry/nifi-registry-current/flow_storage
+    networks:
+      - main-rnd
+
+networks:
+  main-rnd:

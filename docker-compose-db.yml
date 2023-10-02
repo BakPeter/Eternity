@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  postgres-db:
+    image: postgres
+    container_name: postgresDb
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=EternityDb
+    ports:
+      - 5431:5432
+    volumes:
+      - C:\Docker\Data\Postgres:/var/lib/postgresql/data
+    networks:
+      - main
+
+  minioDb:
+    image: minio/minio
+    container_name: minioDb
+    restart: always
+    ports:
+      - 9000:9000
+      - 9001:9001
+    command: server /data --console-address ":9001"
+    volumes:
+      - C:\Docker\Data\MinIo:/data
+    networks:
+      - main
+networks:
+  main:
+    name: main-network

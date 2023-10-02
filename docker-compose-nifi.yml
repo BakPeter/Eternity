@@ -1,0 +1,27 @@
+version: "3.4"
+
+services:
+  nifi:
+    container_name: nifi
+    image: 'apache/nifi:latest'
+    restart: on-failure
+    environment:
+      - SINGLE_USER_CREDENTIALS_USERNAME=admin
+      - SINGLE_USER_CREDENTIALS_PASSWORD=ctsBtRBKHRAx69EqUghvvgEvjnaLjFEB
+      - NIFI_WEB_HTTPS_PORT=8443
+    ports:
+      - 8443:8443
+    volumes:
+      - C:\Docker\Data\nifi\eternity-ex\database_repository:/opt/nifi/nifi-current/database_repository
+      - C:\Docker\Data\nifi\eternity-ex\flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
+      - C:\Docker\Data\nifi\eternity-ex\content_repository:/opt/nifi/nifi-current/content_repository
+      - C:\Docker\Data\nifi\eternity-ex\provenance_repository:/opt/nifi/nifi-current/provenance_repository
+      - C:\Docker\Data\nifi\eternity-ex\state:/opt/nifi/nifi-current/state
+      - C:\Docker\Data\nifi\eternity-ex\logs:/opt/nifi/nifi-current/logs
+      # uncomment the next line after copying the /conf directory from the container to your local directory to persist NiFi flows
+      # - C:\Docker\Data\nifi\eternity-ex\conf:/opt/nifi/nifi-current/conf
+    networks:
+      - main
+
+networks:
+  main:
